@@ -1,0 +1,25 @@
+﻿{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "target": "es5",
+    "module": "system",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "pretty":  true,
+    "noImplicitAny": false,
+    "paths": {
+
+      "webdriverio": [
+        "node_modules/webdriverio"
+      ]
+    }
+  },
+  "compileOnSave": true, 
+  "exclude": [
+    "jspm_packages",
+    "node_modules"
+  ]
+}

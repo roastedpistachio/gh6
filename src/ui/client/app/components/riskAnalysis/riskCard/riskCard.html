@@ -1,0 +1,28 @@
+<div class="riskCard" ng-class="$ctrl.riskCardClass">
+  <div class="arrows">
+    <button type="button" ng-disabled="$ctrl.leftButtonDisabled" ng-click="$ctrl.moveLeft()">
+      <i class="fa fa-arrow-left"></i>
+    </button>
+    <button type="button" ng-disabled="$ctrl.rightButtonDisabled" ng-click="$ctrl.moveRight()">
+      <i class="fa fa-arrow-right"></i>
+    </button>
+  </div>
+  <a href ui-sref="risks.risk({id: $ctrl.risk.id})">
+  <section class="riskCardTitle">
+    <div class="riskCardClientName">{{$ctrl.risk.client.name }}</div>
+    <div class="riskCardInfo">
+      <span am-time-ago="$ctrl.risk.created"></span> — {{$ctrl.risk.riskFactor}}
+    </div>
+  </section>
+  <div>
+    <section ng-if="$ctrl.risk.caseWorker" class="riskCardCaseWorker">
+      Case Worker: {{$ctrl.risk.caseWorker}}
+    </section>
+    <section class="riskCardNotes" ng-if="$ctrl.risk.notes && $ctrl.risk.notes.length">
+      <strong>Last Note</strong>
+      <p>{{$ctrl.risk.notes && $ctrl.risk.notes.length && $ctrl.risk.notes[$ctrl.risk.notes.length - 1].message}}
+    </section>
+  </div>
+  </a>
+
+</div>

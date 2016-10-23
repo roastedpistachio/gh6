@@ -1,0 +1,14 @@
+@import "styles/variables";
+@import "bootstrap";
+@import "styles/mixins";
+@import "styles/utility";
+@import "styles/main";
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.content-main {
+  flex: 1 1;
+}

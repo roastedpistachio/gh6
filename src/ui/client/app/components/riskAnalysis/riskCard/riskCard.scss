@@ -1,0 +1,62 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "styles/variables";
+@import "styles/mixins";
+
+.riskCard {
+  background: #fff;
+  border-radius: 0.4rem;
+  margin-bottom: 2rem;
+  position: relative;
+  &.danger { border-left: 0.5rem solid $brand-danger; }
+  &.warning { border-left: 0.5rem solid $brand-warning; }
+  &.success { border-left: 0.5rem solid $brand-success; }
+  @include drop-shadow(0.5);
+  .arrows {
+    font-size: 0;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    button {
+      border: 0;
+      font-size: 1.3rem;
+      background: #eee;
+      border-radius: 1px;
+      margin: 1px;
+      &:disabled {
+        opacity: 0.3;
+      }
+    }
+  }
+  a {
+    color: inherit;
+    outline: none;
+    &:hover, &:focus, &:active {
+      color: inherit;
+      text-decoration: none;
+      outline: none;
+    }
+  }
+  section {
+    padding: 1rem 2.3rem;
+    border-bottom: 1px solid #ddd;
+  }
+  .riskCardTitle {
+    padding-top: 2.2rem;
+  }
+  .riskCardCaseWorker {
+    padding: 0.6rem 2.3rem;
+    font-size: 1.2rem;
+    color: $gray;
+  }
+  .riskCardClientName {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .riskCardInfo {
+    font-size: 1.1rem;
+  }
+  .riskCardNotes p {
+    margin: 0;
+  }
+}

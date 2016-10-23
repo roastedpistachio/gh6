@@ -1,0 +1,85 @@
+<div class="riskAnalysis">
+  <risk-header active-risk-filter="$ctrl.activeRiskFilter" filter-changed="$ctrl.updateFilter(filter)" search-changed="$ctrl.updateSearch(query)"></risk-header>
+  <div class="container">
+    <div class="riskColumns">
+      <div class="riskColumn">
+        <header class="riskColumnHeader">
+          <h4 class="riskColumnTitle">Assignment</h4>
+          <div class="riskColumnControls">
+            <span class="riskColumnCount">{{$ctrl.getFilteredRiskCount('Assignment')}}</span>
+            <select class="riskColumnSort form-control">
+              <option selected>Highest First</option>
+            <select>
+          </div>
+        </header>
+        <section>
+          <risk-card
+            ng-repeat="risk in $ctrl.risks | statusEquals:'Assignment' | filter: $ctrl.search | orderBy:'-risk'"
+            risk="risk"
+            update-status="$ctrl.updateStatus(status, risk)">
+          </risk-card>
+        </section>
+      </div>
+
+      <div class="riskColumn">
+        <header class="riskColumnHeader">
+          <h4 class="riskColumnTitle">Inital Contact</h4>
+          <div class="riskColumnControls">
+            <span class="riskColumnCount">{{$ctrl.getFilteredRiskCount('Awaiting Initial Contact')}}</span>
+            <select class="riskColumnSort form-control">
+              <option selected>Highest First</option>
+            <select>
+          </div>
+        </header>
+        <section>
+          <risk-card
+            ng-repeat="risk in $ctrl.risks | statusEquals:'Awaiting Initial Contact' | filter: $ctrl.search | orderBy:'-risk'"
+            risk="risk"
+            update-status="$ctrl.updateStatus(status, risk)">
+          </risk-card>
+        </section>
+      </div>
+
+      <div class="riskColumn">
+        <header class="riskColumnHeader">
+          <h4 class="riskColumnTitle">Mitigation</h4>
+          <div class="riskColumnControls">
+            <span class="riskColumnCount">{{$ctrl.getFilteredRiskCount('Mitigating')}}</span>
+            <select class="riskColumnSort form-control">
+              <option selected>Highest First</option>
+            <select>
+          </div>
+        </header>
+        <section>
+          <risk-card
+            ng-repeat="risk in $ctrl.risks | statusEquals:'Mitigating' | filter: $ctrl.search | orderBy:'-risk'"
+            risk="risk"
+            update-status="$ctrl.updateStatus(status, risk)">
+          </risk-card>
+        </section>
+      </div>
+
+      <div class="riskColumn">
+        <header class="riskColumnHeader">
+          <h4 class="riskColumnTitle">Follow Up</h4>
+          <div class="riskColumnControls">
+            <span class="riskColumnCount">{{$ctrl.getFilteredRiskCount('Awaiting Follow Up')}}</span>
+            <select class="riskColumnSort form-control">
+              <option selected>Highest First</option>
+            <select>
+          </div>
+        </header>
+        <section>
+          <risk-card
+            ng-repeat="risk in $ctrl.risks | statusEquals:'Awaiting Follow Up' | orderBy:'-risk'"
+            risk="risk"
+            update-status="$ctrl.updateStatus(status, risk)">
+          </risk-card>
+        </section>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div ui-view></div>

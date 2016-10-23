@@ -1,0 +1,89 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "styles/variables";
+@import "styles/mixins";
+
+.riskHeader {
+  padding: 3rem 0;
+  background: white;
+  position: relative;
+  .container {
+    position: relative;
+  }
+  .fab {
+    height: 5.4rem;
+    width: 5.4rem;
+    background: #AF3CCF;
+    border-radius: 50%;
+    color: #fff;
+    border: 0;
+    font-size: 3.5rem;
+    line-height: 5.2rem;
+    font-weight: 300;
+    position: absolute;
+    bottom: -5.5rem;
+    right: 0;
+    transition: all 0.3s;
+    @include drop-shadow(0.5, #AF3CCF);
+    &:before {
+      transition: all 0.3s;
+      border-radius: 50%;
+    }
+    &:hover {
+      transform: scale(1.1);
+      @include drop-shadow(1.5, #AF3CCF);
+    }
+  }
+  .riskSelector {
+    display: inline-block;
+    width: auto;
+    min-width: 30rem;
+  }
+  .riskSelectorToggle {
+    font-size: 3rem;
+    line-height: 3.6rem;
+    font-weight: 300;
+    color: $text-color;
+    &:hover, &:active, &:focus {
+      text-decoration: none;
+    }
+  }
+  i.fa.fa-caret-down {
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+  .dropdown-menu {
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 0.5rem;
+  }
+  .search {
+    margin-top: 3rem;
+    display: flex;
+    width: 100%;
+    &:before {
+      content: "";
+      display: block;
+      height: 2rem;
+      width: 2.1rem;
+      background-image: url('/assets/images/search.svg');
+      background-position: center;
+      background-size: contain;
+    }
+    .search-input {
+      margin-left: 1rem;
+      line-height: 2rem;
+      padding: 0;
+      font-size: 1.8rem;
+      border: 0;
+      outline: 0;
+      box-shadow: 0;
+      font-weight: 300;
+      background: transparent;
+      &:placeholder {
+        color: $gray;
+      }
+    }
+  }
+}

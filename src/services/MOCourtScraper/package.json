@@ -1,0 +1,25 @@
+{
+  "name": "gh6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cheerio": "^0.22.0",
+    "child_process": "^1.0.2",
+    "gulp": "^3.9.1",
+    "node-mssql": "0.0.1",
+    "path": "^0.12.7",
+    "protractor": "^4.0.9",
+    "q": "^1.4.1",
+    "request": "^2.75.0",
+    "require": "^2.4.20",
+    "seriate": "^0.8.0",
+    "webdriver-manager": "^10.2.4",
+    "webdriverio": "^4.2.16"
+  }
+}

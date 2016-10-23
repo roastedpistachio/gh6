@@ -1,0 +1,14 @@
+.border-box { @include border-box; }
+.clickable { cursor: pointer; }
+.no-margin { margin: 0px; }
+
+.voffset1 { margin-top: 2px; }
+.voffset2 { margin-top: 5px;  }
+.voffset3 { margin-top: 10px; }
+.voffset4 { margin-top: 15px; }
+.voffset5 { margin-top: 20px; }
+.voffset6 { margin-top: 25px; }
+.voffset7 { margin-top: 30px; }
+.voffset8 { margin-top: 40px; }
+.voffset9 { margin-top: 50px; }
+.voffset10 { margin-top: 60px; }

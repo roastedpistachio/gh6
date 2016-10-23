@@ -1,0 +1,42 @@
+<div class="assignmentModal">
+  <div class="modal-header">
+    <small>{{$ctrl.risk.caseStatus}}</small>
+    <h3 class="modal-title">
+      {{$ctrl.risk.client.name}}
+    </h3>
+    <p>{{$ctrl.risk.riskFactor}}</p>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <div ng-if="$ctrl.matches.length">
+      <p class="lead text-center voffset4">Match risk with existing client</p>
+      <div class="resultCards">
+        <div class="resultCard" ng-repeat="match in $ctrl.matches">
+          <a href ng-click="$ctrl.assignMatch(match)">
+            <h2 class="resultCardName">{{match.firstName}} {{match.lastName}}</h2>
+            <div class="resultCardInfo">
+              <div>
+                <strong>Date of Birth</strong>
+                <p>{{match.dateOfBirth | amDateFormat:'MM/DD/YYYY'}}</p>
+              </div>
+              <div>
+                <strong>Last Known Address</strong>
+                <p>{{match.address}}, {{match.city}}, {{match.state}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div ng-if="!$ctrl.matches.length" class="text-center">
+      <div class="voffset4">
+        <em>No Results Found</em>
+      </div>
+      <p class="lead voffset4">
+        <a href ng-click="$ctrl.save()">Create New Client</a>
+      </p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default pull-left" type="button" ng-click="$ctrl.close()">Cancel</button>
+  </div>
+</div>

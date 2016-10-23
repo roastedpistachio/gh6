@@ -1,0 +1,31 @@
+@mixin border-box {
+	box-sizing: border-box;
+	&:before, &:after { box-sizing: border-box; }
+	*, *:before, *:after { box-sizing: border-box; }
+}
+@mixin drop-shadow($strength: 1, $position: relative, $color: false) {
+	$opacity: $strength / 10;
+	$size: 0 #{$strength * 0.5rem} #{$strength * 1.5rem};
+	position: $position;
+	&:before {
+		content: "";
+		display: block;
+		position: absolute;
+		top: 10%;
+		bottom: 0;
+		left: 5%;
+		right: 5%;
+		z-index: -1;
+		box-shadow: #{$size} rgba(0,0,0,$opacity);
+	}
+	@if $color {
+		&:before {
+			box-shadow: #{$size} rgba(0,0,0,$opacity), #{$size} rgba($color, $opacity);
+		}
+	}
+}
+
+@function rem-calc($size) {
+  $remSize: $size / 10px;
+  @return #{$remSize}rem;
+}

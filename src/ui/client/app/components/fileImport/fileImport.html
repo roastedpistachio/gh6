@@ -1,0 +1,100 @@
+<div class='file-import-header'>
+  <div class='container'>
+    <h1>Risk Factor Import</h1>
+  	<p class="lead">Use the risk factor import wizard to bring potential client data into the system. We will analyze your file and you will
+  		be able to map the fields from the file to the important fields in the system.
+  	</p>
+  </div>
+</div>
+<div class="container fileImport">
+
+	<div id="panes" class="clearfix">
+		<hr />
+		<div id="pane1" ng-class="{'selected': $ctrl.selectedPane === 'pane1'}" class="panes">
+			<h3>Step 1: Select CSV file to upload</h3>
+			<input type="file" file="file" class="form-control" />
+		</div>
+		<div id="pane2" ng-class="{'selected': $ctrl.selectedPane === 'pane2'}" class="panes">
+
+			<div id="mappings">
+				<h3>Step 2:</h3>
+        <p class="lead">The fields from your file are in the dropdowns below. Select which field maps to a known field in our system.</p>
+				<div class="mapping clearfix" ng-repeat="data in $ctrl.data.serverNames track by $index">
+					<div class="serverNameContainer">
+						{{data}}
+					</div>
+					<div class="controlContainer">
+
+						<div class="btn-group" uib-dropdown is-open="status.isopen">
+							<button id="single-button" type="button" class="btn btn-primary fieldButton" uib-dropdown-toggle ng-disabled="disabled">
+                <span class="dropdowndata">
+                 <span class="fieldName">
+                {{$ctrl.selections[$index].selectedColumnText}}</span><span class="fieldData">{{$ctrl.selections[$index].selectedColumnSubtext}}</span>
+                </span>
+                <span class="caret"></span>
+              </button>
+							<ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+								<li></li>
+								<li ng-repeat="headers in $ctrl.data.headers track by $index">
+									<a ng-click="$ctrl.selectField($parent.$index, $index, headers, $ctrl.data.data[$index])" href>
+										<span class="fieldName">
+                      {{headers}}
+                      </span>
+										<span class="fieldData">
+{{$ctrl.data.data[$index]}}
+                        </span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="mapping">
+<div class="serverNameContainer">
+					Risk Type
+					</div>
+					<div class="controlContainer">
+
+<input type="text" style="min-width:300px" class="form-control" ng-model="$ctrl.data.riskType" />
+
+					</div>
+						</div>
+			</div>
+		</div>
+		<div id="pane3" ng-class="{'selected': $ctrl.selectedPane === 'pane3'}" class="panes">
+			<h3>Step 3: Review and confirm your mappings
+			</h3>
+			<div class="mapping clearfix" ng-repeat="selection in $ctrl.selections track by $index">
+				<div class="serverNameContainer">
+					{{selection.serverName}}
+				</div>
+				<div class="controlContainer">
+					<span ng-if="selection.selectedColumnIndex > -1">
+            <span class="fieldName">
+                {{selection.selectedColumnText}}
+            </span>
+            <span class="fieldData">{{selection.selectedColumnSubtext}}</span>
+					</span>
+					<i ng-if="selection.selectedColumnIndex === -1">No Selection Made</i>
+				</div>
+			</div>
+		</div>
+		<div id="pane4" ng-class="{'selected': $ctrl.selectedPane === 'pane4'}" class="panes">
+			<h3>
+				Your file is being processed. You should see the risk factors appear momentarily
+				over in Risk Management.
+			</h3>
+			<div class="uploadAnotherFile">
+					<button class="form-control" ng-click="$ctrl.startOver()">Upload Another File</button>
+					<br>
+					<button class="form-control" ui-sref="risks">Return to Risk Managmenet</button>
+				</div>
+
+		</div>
+	</div>
+	<div id="panenav" class="clearfix" ng-if="$ctrl.selectedPane !== 'pane4'">
+		<button class="form-control" ng-if="$ctrl.selectedPane !== 'pane1'" style="float:left" type="button" ng-click="$ctrl.prevPane()">Previous</button>
+		<button class="form-control"  style="float:right" type="button" ng-click="$ctrl.nextPane()">
+      <span ng-if="$ctrl.selectedPane === 'pane3'">Complete</span>
+      <span ng-if="$ctrl.selectedPane !== 'pane3'">Next</span></button>
+	</div>

@@ -1,0 +1,111 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "styles/variables";
+@import "styles/mixins";
+
+.assignmentModal {
+  .modal-header {
+    text-align: center;
+    font-weight: 300;
+    h3 {
+      font-size: 4rem;
+      line-height: 4.8rem;
+      margin: 0;
+      font-weight: 300;
+    }
+    small {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 1.1rem;
+      margin-top: 1rem;
+    }
+    p {
+      color: $brand-danger;
+      margin: 0;
+      font-size: 1.8rem;
+    }
+  }
+  .name {
+    padding: 1rem;
+    background: #eee;
+    border-radius: 3px;
+  }
+  .resultCards {
+    margin-top: 3.3rem;
+  }
+  .resultCard {
+    @include drop-shadow();
+    background: #fff;
+    width: 90%;
+    border: 1px solid rgba(black, 0.1);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    &:before {
+      z-index: 100;
+    }
+    a {
+      color: inherit;
+      display: block;
+      &:hover, &:focus, &:active {
+        color: inherit;
+        text-decoration: none;
+      }
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: 103;
+        background-image: url('/assets/images/angle.svg');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 18px;
+        height: 34px;
+        right: 33px;
+        top: 50%;
+        margin-top: -16px;
+
+      }
+    }
+    &:after {
+      z-index: 101;
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: #fff;
+      border-radius: 0.5rem;
+    }
+    .resultCardName, .resultCardInfo {
+      position: relative;
+      z-index: 102;
+      margin: 0;
+    }
+    margin: 0 auto 20px;
+    display: block;
+    .resultCardName {
+      margin-bottom: 1rem;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .resultCardInfo {
+      display: flex;
+      margin: 0 -2rem;
+      > div {
+        margin: 0 2rem;
+      }
+      strong {
+        font-size: 12px;
+        font-weight: bold;
+      }
+      p {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 300;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+// Extends Boostrap 3 Sass Variables
+// https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss
+
+//== Neutrals
+$gray-darker:               lighten(#000, 13.5%); // #222
+$gray-dark:                 lighten(#000, 20.0%); // #333
+$gray:                      lighten(#000, 33.5%); // #555
+$gray-light:                lighten(#000, 46.7%); // #777
+$gray-lighter:              lighten(#000, 93.5%); // #eee
+
+//== Colors
+$brand-primary: #E04141;
+$brand-warning: #EAAA07;
+$brand-success: #0CAF47;
+$brand-info: #AF3CCF;
+
+//== Globals
+$body-bg:                   #EEE;
+$text-color:                #1A1919;
+
+//== Fonts
+$font-family-sans-serif:    'Roboto', sans-serif;
+$font-family-serif:         Georgia, "Times New Roman", Times, serif;
+$font-family-base:          $font-family-sans-serif;
+$icon-font-path:            '/assets/fonts/bootstrap/';

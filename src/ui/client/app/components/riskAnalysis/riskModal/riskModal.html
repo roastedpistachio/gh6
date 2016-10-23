@@ -1,0 +1,137 @@
+<div class="riskModal">
+  <div class="modal-header">
+    <small>{{$ctrl.risk.caseStatus}}</small>
+    <h3 class="modal-title">
+      {{$ctrl.risk.client.name}}
+    </h3>
+    <p>{{$ctrl.risk.riskFactor}}</p>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <aside class="modalActions">
+      <address ng-if="$ctrl.risk.client.address">
+        <span ng-if="$ctrl.risk.client.phone">{{$ctrl.risk.client.phone}} <br></span>
+        <span ng-if="$ctrl.risk.client.address.address">{{$ctrl.risk.client.address.address}} <br></span>
+        <span ng-if="$ctrl.risk.client.address.city">{{$ctrl.risk.client.address.city}},</span>
+        <span ng-if="$ctrl.risk.client.address.state">{{$ctrl.risk.client.address.state}}</span>
+      </address>
+      <button type="button" class="btn btn-block btn-default">View Client Profile</button>
+      <button type="button" class="btn btn-block btn-default">Close Case</button>
+      <button type="button" class="btn btn-block btn-danger">Mark as Homeless</button>
+    </aside>
+    <section class="caseOverview">
+      <div class="form-group">
+        <label>Case Worker:</label>
+        <input type="text" name="name" ng-model="$ctrl.risk.caseWorker" class="form-control">
+      </div>
+      <div class="form-group voffset7">
+        <label>Case Overview:</label>
+        <p class="overview-para" ng-if="!$ctrl.isEditingOverview && $ctrl.risk.caseOverview" ng-click="$ctrl.isEditingOverview = !$ctrl.isEditingOverview">{{$ctrl.risk.caseOverview}}</p>
+        <textarea class="form-control overview" ng-if="$ctrl.isEditingOverview || !$ctrl.risk.caseOverview" ng-model="$ctrl.risk.caseOverview"></textarea>
+        <button
+          ng-if="$ctrl.isEditingOverview || !$ctrl.risk.caseOverview"
+          type="button"
+          class="btn btn-sm btn-default pull-right"
+          ng-click="$ctrl.isEditingOverview = !$ctrl.isEditingOverview">
+          Submit</button>
+      </div>
+
+      <div class="form-group voffset7">
+        <label class="clickable" ng-click="$ctrl.contactOpen = !$ctrl.contactOpen">
+          <i class="fa fa-angle-right" ng-class="{'fa-rotate-90': $ctrl.contactOpen}"></i>
+          &nbsp; Case Initial Contact
+        </label>
+        <div uib-collapse="!$ctrl.contactOpen">
+          <div class="checkbox">
+            <label><input type="checkbox" ng-model="$ctrl.risk.initialContact.contacted"> Client Contacted</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" ng-model="$ctrl.risk.initialContact.informationObtained"> Contact Information Obtained</label>
+          </div>
+          <div class="checkbox">
+            <label><input type="checkbox" ng-model="$ctrl.risk.initialContact.helpRequired"> Further Help Required</label>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label class="clickable" ng-click="$ctrl.mitigatingOpen = !$ctrl.mitigatingOpen">
+          <i class="fa fa-angle-right" ng-class="{'fa-rotate-90': $ctrl.mitigatingOpen}"></i>
+          &nbsp; Mitigation
+        </label>
+        <div uib-collapse="!$ctrl.mitigatingOpen">
+          <select  ng-model="$ctrl.risk.mitigation.strategy" class="form-control">
+            <option disabled selected>Mitigation Stragegy</option>
+            <option selected>One-time Financial Assistance</option>
+          </select>
+          <div class="voffset5">
+            <label>Details</label>
+            <input type="text" ng-model="$ctrl.risk.mitigation.details" class="form-control">
+          </div>
+          <div class="voffset5">
+            <label>Housing Retained?</label>
+            <div class="checkbox">
+              <label><input type="checkbox" ng-model="$ctrl.risk.mitigation.housingRetained"> Yes</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label class="clickable" ng-click="$ctrl.followUpOpen = !$ctrl.followUpOpen">
+          <i class="fa fa-angle-right" ng-class="{'fa-rotate-90': $ctrl.followUpOpen}"></i>
+          &nbsp; Follow Up
+        </label>
+        <div uib-collapse="!$ctrl.followUpOpen">
+          <div class="voffset5">
+            <label>Follow Up Date</label>
+            <input type="text"
+              class="form-control"
+              uib-datepicker-popup="dd-MMMM-yyyy"
+              is-open="datePickerOpen"
+              ng-click="datePickerOpen = !datePickerOpen"
+              ng-model="$ctrl.risk.followUp.actualDate">
+          </div>
+          <div class="voffset5">
+            <label>Housing Retained?</label>
+            <div class="checkbox">
+              <label><input type="checkbox" ng-model="$ctrl.risk.mitigation.housingRetained"> Yes</label>
+            </div>
+          </div>
+          <div class="voffset5">
+            <label>How does the client feel about his housing situation?</label>
+            <div class="text-center" ng-if="$ctrl.risk.followUp.clientSubjectiveStatus">{{$ctrl.risk.followUp.clientSubjectiveStatus}}</div>
+            <div class="text-center" ng-if="!$ctrl.risk.followUp.clientSubjectiveStatus">
+              <em><small>Use Slider Below</small></em>
+            </div>
+            <input type="range" min="0" max="10" step="1" ng-model="$ctrl.risk.followUp.clientSubjectiveStatus">
+          </div>
+          <div class="voffset5">
+            <label>How likely do you feel the client is to retain housing?</label>
+            <div class="text-center" ng-if="$ctrl.risk.followUp.caseWorkerSubjectiveStatus">{{$ctrl.risk.followUp.caseWorkerSubjectiveStatus}}</div>
+            <div class="text-center" ng-if="!$ctrl.risk.followUp.caseWorkerSubjectiveStatus">
+              <em><small>Use Slider Below</small></em>
+            </div>
+            <input type="range" min="0" max="10" step="1" ng-model="$ctrl.risk.followUp.caseWorkerSubjectiveStatus">
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label>Notes:</label>
+        <article ng-repeat="note in $ctrl.risk.notes">
+          <small><strong>{{note.author}}</strong> - <span am-time-ago="note.date"></span></small>
+          <p>{{note.message}}</p>
+        </article>
+        <form ng-submit="$ctrl.addNote()" class="clearfix">
+          <textarea name="name" rows="3" class="form-control" ng-model="$ctrl.newNote"></textarea>
+          <button type="submit" class="btn btn-sm btn-default pull-right voffset2" ng-disabled="!$ctrl.newNote.length">Add Comment</button>
+        </form>
+      </div>
+
+    <section>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="$ctrl.save()">Save Changes</button>
+    <button class="btn btn-default pull-left" type="button" ng-click="$ctrl.close()">Cancel</button>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "styles/variables";
+@import "styles/mixins";
+
+.mainHead {
+  background-color: $brand-primary;
+  height: 60px;
+  .link {
+    color: #fff;
+  }
+}

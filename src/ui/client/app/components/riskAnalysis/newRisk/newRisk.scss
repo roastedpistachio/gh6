@@ -1,0 +1,17 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "styles/variables";
+@import "styles/mixins";
+
+.newRisk {
+  h3 {
+    margin-top: 0;
+  }
+  .btn.btn-danger {
+    font-weight: bold;
+  }
+  .modal-body{
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}

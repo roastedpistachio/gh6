@@ -1,0 +1,27 @@
+﻿CREATE TABLE [dbo].[Disabilities] (
+    [DisabilitiesID]       NVARCHAR (50) NOT NULL,
+    [ProjectEntryID]       INT           NOT NULL,
+    [PersonalID]           INT           NOT NULL,
+    [InformationDate]      DATE          NOT NULL,
+    [DisabilityType]       INT           NOT NULL,
+    [DisabilityResponse]   INT           NOT NULL,
+    [IndefiniteAndImpairs] INT           NULL,
+    [DocumentationOnFile]  BIT           NULL,
+    [ReceivingServices]    BIT           NULL,
+    [PATHHowConfirmed]     BIT           NULL,
+    [PATHSMIInformation]   BIT           NULL,
+    [TCellCountAvailable]  BIT           NULL,
+    [TCellCount]           INT           NULL,
+    [TCellSource]          NVARCHAR (50) NULL,
+    [ViralLoadAvailable]   BIT           NULL,
+    [ViralLoad]            NVARCHAR (50) NULL,
+    [ViralLoadSource]      NVARCHAR (50) NULL,
+    [DataCollectionStage]  INT           NULL,
+    [DateCreated]          DATETIME      NOT NULL,
+    [DateUpdated]          DATETIME      NOT NULL,
+    [UpdateBy]             INT           NOT NULL,
+    [DateDeleted]          DATETIME      NULL,
+    CONSTRAINT [PK_Disabilities] PRIMARY KEY CLUSTERED ([DisabilitiesID] ASC),
+    CONSTRAINT [FK_Disabilities_Client] FOREIGN KEY ([PersonalID]) REFERENCES [dbo].[Client] ([UUID])
+);
+

@@ -1,0 +1,67 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "styles/variables";
+@import "styles/mixins";
+
+.riskModal {
+  .modal-header {
+    font-weight: 300;
+    h3 {
+      font-size: 4rem;
+      line-height: 4.8rem;
+      margin: 0;
+      font-weight: 300;
+    }
+    small {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 1.1rem;
+      margin-top: 1rem;
+    }
+    p {
+      color: $brand-danger;
+      margin: 0;
+      font-size: 1.8rem;
+    }
+  }
+  .overview-para {
+    cursor: pointer;
+    padding: 1rem;
+    margin: 0 -1rem -1rem -1rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #f5f5f5;
+    &:hover {
+      border: 1px solid #ddd;
+    }
+  }
+  div[uib-collapse] {
+    padding: 1rem 0 2rem 0;
+  }
+  hr {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  .form-group > label {
+    font-size: 2.2rem;
+    font-weight: 300;
+  }
+  .modal-body {
+    display: flex;
+  }
+  .modalActions {
+    width: 17.5rem;
+
+  }
+  .caseOverview {
+    flex: 1;
+    padding: 0 2.7rem 0 4.2rem;
+    .form-control.overview {
+      height: 10rem;
+      margin-bottom: 1rem;
+    }
+  }
+}

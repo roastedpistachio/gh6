@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[CaseWorkers]
+(
+	[Id] INT IDENTITY (1,1) NOT NULL, 
+    [Name] NVARCHAR(250) NOT NULL,
+	CONSTRAINT [PK_CaseWorkers] PRIMARY KEY CLUSTERED ([Id] ASC)
+)

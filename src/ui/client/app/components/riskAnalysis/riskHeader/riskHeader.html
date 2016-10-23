@@ -1,0 +1,22 @@
+<div class="riskHeader">
+  <div class="container">
+    <uib-dropdown class="riskSelector">
+      <a href uib-dropdown-toggle class="riskSelectorToggle">
+        {{$ctrl.riskTypes[$ctrl.activeRiskFilter]}}
+        <i class="fa fa-caret-down"></i>
+      </a>
+      <ul class="dropdown-menu" uib-dropdown-menu>
+        <li
+          role="menuitem"
+          ng-repeat="(key, value) in $ctrl.riskTypes"
+          ng-class="{active: $ctrl.activeRiskFilter === key }">
+          <a href ng-click="$ctrl.setFilter(key)">{{value}}</a>
+        </li>
+      </ul>
+    </uib-dropdown>
+    <div class="search">
+      <input type="text" class="search-input" ng-model="query" ng-change="$ctrl.searchChanged({query: query})" placeholder="Search all at risk..."/>
+    </div>
+    <button ui-sref="risks.new" class="fab">+</button>
+  </div>
+</div>
